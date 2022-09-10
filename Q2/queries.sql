@@ -49,3 +49,8 @@ GROUP BY student_id;
 SELECT student_id, count(dept_name)
 FROM majorsin
 GROUP BY student_id;
+--9
+SELECT dept_name, count(student_id)
+FROM majorsin
+GROUP BY dept_name
+HAVING count(student_id)>0;
