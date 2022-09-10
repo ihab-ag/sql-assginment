@@ -36,3 +36,12 @@ WHERE student_id in (
     FROM majorsin
     WHERE dept_name like ('CS')
 ) and course_name like ('CSC275');
+-- 7
+SELECT count(student_id)
+FROM enrolled
+WHERE student_id in (
+    SELECT student_id
+    FROM majorsin
+    WHERE dept_name like ('CS')
+)
+GROUP BY student_id;
