@@ -45,3 +45,7 @@ WHERE student_id in (
     WHERE dept_name like ('CS')
 )
 GROUP BY student_id;
+-- 8
+SELECT student_id, count(dept_name)
+FROM majorsin
+GROUP BY student_id;
