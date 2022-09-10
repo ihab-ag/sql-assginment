@@ -29,3 +29,10 @@ WHERE student.id not in (
     FROM enrolled
     GROUP BY student_id);
 --6
+SELECT count(student_id)
+FROM enrolled
+WHERE student_id in (
+    SELECT student_id
+    FROM majorsin
+    WHERE dept_name like ('CS')
+) and course_name like ('CSC275');
