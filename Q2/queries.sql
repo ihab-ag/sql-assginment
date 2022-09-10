@@ -13,3 +13,7 @@ WHERE start_time=(
 SELECT  count(student_id), dept_name 
 FROM majorsin
 GROUP BY dept_name;
+-- 4
+SELECT enrolled.course_name as course_name
+FROM majorsin, enrolled
+WHERE dept_name like ('BIF') and enrolled.student_id=majorsin.student_id;
