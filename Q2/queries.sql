@@ -20,13 +20,9 @@ SELECT s.name
 FROM student as s
 WHERE s.id not in (SELECT DISTINCT e.student_id FROM  enrolled as e);
 --6
-SELECT count(student_id)
-FROM enrolled
-WHERE student_id in (
-    SELECT student_id
-    FROM majorsin
-    WHERE dept_name like ('CS')
-) and course_name like ('CSC275');
+SELECT COUNT(e.student_id)
+FROM enrolled as e, course as c, majorsin as m, department as d
+WHERE e.student_id=m.student_id and m.dept_name=d.id and d.name="CS" and e.course_id=c.crn and c.name="CSC275";
 -- 7
 SELECT count(student_id)
 FROM enrolled
