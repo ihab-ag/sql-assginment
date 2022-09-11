@@ -16,12 +16,9 @@ SELECT DISTINCT c.name
 FROM  course as c, majorsin as m, department as d, enrolled e
 WHERE c.crn= e.course_id and e.student_id=m.student_id and m.dept_name=d.id and d.name="BIF";
 --5
-SELECT name
-FROM student
-WHERE student.id not in (
-    SELECT student_id
-    FROM enrolled
-    GROUP BY student_id);
+SELECT s.name
+FROM student as s
+WHERE s.id not in (SELECT DISTINCT e.student_id FROM  enrolled as e);
 --6
 SELECT count(student_id)
 FROM enrolled
