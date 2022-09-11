@@ -24,14 +24,9 @@ SELECT COUNT(e.student_id)
 FROM enrolled as e, course as c, majorsin as m, department as d
 WHERE e.student_id=m.student_id and m.dept_name=d.id and d.name="CS" and e.course_id=c.crn and c.name="CSC275";
 -- 7
-SELECT count(student_id)
-FROM enrolled
-WHERE student_id in (
-    SELECT student_id
-    FROM majorsin
-    WHERE dept_name like ('CS')
-)
-GROUP BY student_id;
+SELECT COUNT(s.id)
+FROM enrolled as e, majorsin as m, department as d, student as s
+WHERE s.id=e.student_id and e.student_id=m.student_id and m.dept_name=d.id and d.name="CS";
 -- 8
 SELECT student_id, count(dept_name)
 FROM majorsin
