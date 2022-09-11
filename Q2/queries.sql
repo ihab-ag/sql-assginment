@@ -33,7 +33,7 @@ FROM student as s, majorsin as m
 WHERE s.id=m.student_id
 GROUP BY m.student_id;
 --9
-SELECT dept_name, count(student_id)
-FROM majorsin
-GROUP BY dept_name
-HAVING count(student_id)>0;
+SELECT d.name, count(m.student_id)
+FROM majorsin as m, department as d
+WHERE d.id=m.dept_name
+GROUP BY m.dept_name;
