@@ -12,13 +12,9 @@ WHERE start_time=(
 --3
 -
 -- 4
-SELECT DISTINCT course_name
-FROM enrolled
-WHERE student_id in (
-    SELECT student_id
-    FROM majorsin
-    WHERE dept_name like ('BIF')
-);
+SELECT DISTINCT c.name
+FROM  course as c, majorsin as m, department as d, enrolled e
+WHERE c.crn= e.course_id and e.student_id=m.student_id and m.dept_name=d.id and d.name="BIF";
 --5
 SELECT name
 FROM student
